@@ -1,0 +1,42 @@
+<table class="data-table">
+  <thead>
+    <tr>
+      @for (header of headers; track $index) {
+      <th>{{ header }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of displayedData; track row.id) {
+    <tr>
+      @for (propertyName of propertyNames; track $index) {
+      <td>
+        @if (customCellTemplates[propertyName]) {
+        <ng-container
+          [ngTemplateOutlet]="customCellTemplates[propertyName]"
+          [ngTemplateOutletContext]="{ $implicit: row }"
+        ></ng-container>
+        } @else {
+        {{ row[propertyName] }}
+        }
+      </td>
+      }
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div class="table-footer">
+  <div class="total-results">{{ totalResults }} resultados</div>
+  <div class="pagination-controls">
+    <select
+      [value]="pageSize"
+      (change)="onPageSizeChange($event)"
+      class="form-control"
+    >
+      @for (option of pageSizeOptions; track $index) {
+      <option [value]="option">{{ option }}</option>
+      }
+    </select>
+  </div>
+</div>

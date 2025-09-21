@@ -1,0 +1,29 @@
+<div class="product-list-page">
+  <div class="row mb-3">
+    <div class="col-6">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Buscar..."
+        [(ngModel)]="searchQuery"
+        (input)="filterProducts()"
+      />
+    </div>
+    <div class="col-6 text-right">
+      <button class="btn btn-primary">Agregar</button>
+    </div>
+  </div>
+  <div class="row product-list-page-content">
+    <app-table
+      class="col-12"
+      [data]="filteredProducts"
+      [headers]="tableHeaders"
+      [propertyNames]="tablePropertyNames"
+      [customCellTemplates]="{ logo: logoCellTemplate }"
+    />
+  </div>
+</div>
+
+<ng-template #logoCellTemplate let-row>
+  <app-avatar [text]="row.name" />
+</ng-template>

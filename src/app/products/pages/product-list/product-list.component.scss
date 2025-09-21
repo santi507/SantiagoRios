@@ -1,0 +1,11 @@
+@use "variables" as *;
+
+.product-list-page {
+  margin-top: 24px;
+  width: 1200px;
+
+  &-content {
+    background-color: $white;
+    padding: 20px;
+  }
+}

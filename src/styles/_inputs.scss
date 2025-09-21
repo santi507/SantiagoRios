@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+.form-control {
+  padding: 0.5rem;
+  border: 1px solid $gray-light;
+  border-radius: 0.375rem;
+  font-size: $font-size-base;
+  font-family: $font-stack;
+  outline: none;
+  &:focus {
+    border-color: $gray;
+  }
+
+  &-error {
+    border-color: $danger;
+  }
+}
