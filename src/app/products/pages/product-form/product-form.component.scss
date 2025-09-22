@@ -1,0 +1,21 @@
+@use "variables" as *;
+
+.product-form-container {
+  max-width: 800px;
+  width: 800px;
+  margin: 40px auto;
+  background-color: $white;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: $dark;
+  border-bottom: 1px solid $dark;
+  padding: 20px;
+}
+
+.button-group {
+  margin: 80px 0;
+}

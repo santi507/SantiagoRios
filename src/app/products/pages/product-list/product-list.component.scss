@@ -9,3 +9,48 @@
     padding: 20px;
   }
 }
+
+.kebab-menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.kebab-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.kebab-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.option-button {
+  background-color: transparent;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+}

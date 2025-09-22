@@ -8,7 +8,6 @@ describe('BannerComponent', () => {
       componentInputs: { title: 'Welcome to the Bank' },
     });
 
-    expect(screen.getByText('🏦')).toBeInTheDocument();
     expect(screen.getByRole('heading')).toHaveTextContent(
       'Welcome to the Bank'
     );

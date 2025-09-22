@@ -22,11 +22,14 @@ export class TableComponent implements OnChanges {
 
   pageSizeOptions: number[] = [5, 10, 20];
   pageSize: number = 5;
+  currentPage: number = 1;
+  totalPages: number = 1;
   displayedData: any[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data']) {
       this.totalResults = this.data.length;
+      this.totalPages = Math.ceil(this.totalResults / this.pageSize);
       this.updateDisplayedData();
     }
   }
@@ -34,11 +37,22 @@ export class TableComponent implements OnChanges {
   onPageSizeChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.pageSize = Number(target.value);
+    this.totalPages = Math.ceil(this.totalResults / this.pageSize);
+    this.currentPage = 1;
     this.updateDisplayedData();
   }
 
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updateDisplayedData();
+    }
+  }
+
   private updateDisplayedData() {
-    this.displayedData = this.data.slice(0, this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedData = this.data.slice(startIndex, endIndex);
     this.totalResults = this.displayedData.length;
   }
 }

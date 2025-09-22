@@ -1,0 +1,11 @@
+@use "variables" as *;
+
+.validation-error {
+  color: $danger;
+  font-size: 0.85em;
+  margin-top: 5px;
+
+  p {
+    margin: 0;
+  }
+}

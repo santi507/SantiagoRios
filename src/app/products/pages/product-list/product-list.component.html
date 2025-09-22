@@ -10,20 +10,65 @@
       />
     </div>
     <div class="col-6 text-right">
-      <button class="btn btn-primary">Agregar</button>
+      <button class="btn btn-primary" routerLink="/products/add">
+        Agregar
+      </button>
     </div>
   </div>
   <div class="row product-list-page-content">
+    @if (isLoading) {
+    <div class="col-12 text-center loading-message">
+      <p>Cargando Productos...</p>
+    </div>
+    } @else if (filteredProducts.length > 0) {
     <app-table
       class="col-12"
       [data]="filteredProducts"
       [headers]="tableHeaders"
       [propertyNames]="tablePropertyNames"
-      [customCellTemplates]="{ logo: logoCellTemplate }"
+      [customCellTemplates]="{
+        logo: logoCellTemplate,
+        actions: actionsCellTemplate
+      }"
     />
+    } @else {
+    <div class="col-12 text-center no-results-message">
+      <p>No se encontraron productos.</p>
+    </div>
+    }
   </div>
 </div>
 
 <ng-template #logoCellTemplate let-row>
   <app-avatar [text]="row.name" />
+</ng-template>
+
+@if (showModal) {
+<app-modal
+  [message]="
+    '¿Estás seguro de que quieres eliminar el producto ' +
+    productToDelete?.name +
+    '?'
+  "
+  (confirm)="deleteProduct()"
+  (close)="closeModal()"
+></app-modal>
+}
+
+<ng-template #actionsCellTemplate let-row>
+  <div class="kebab-menu-container">
+    <button class="kebab-button" (click)="toggleKebabMenu(row.id)">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </button>
+    @if (activeKebabMenuId === row.id) {
+    <div class="kebab-options">
+      <button class="option-button" (click)="editProduct(row)">Editar</button>
+      <button class="option-button" (click)="confirmDelete(row)">
+        Eliminar
+      </button>
+    </div>
+    }
+  </div>
 </ng-template>

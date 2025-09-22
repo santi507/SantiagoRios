@@ -51,6 +51,27 @@
   color: $gray;
 }
 
+.pagination-controls {
+  .btn {
+    padding: 4px 8px;
+    border: 1px solid $gray-light;
+    background: $white;
+    cursor: pointer;
+    margin: 0 4px;
+
+    &.active {
+      background: $primary;
+      color: $dark;
+      font-weight: bold;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+}
+
 .pagination-controls select {
   padding: 8px;
   border-radius: 4px;

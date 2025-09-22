@@ -1,1 +1,120 @@
-<p>product-form works!</p>
+<div class="product-form-container">
+  <h2 class="text-center">{{ formTitle }}</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            formControlName="id"
+            [class.is-invalid]="
+              productForm.get('id')?.invalid &&
+              (productForm.get('id')?.dirty || productForm.get('id')?.touched)
+            "
+          />
+          <app-form-errors [control]="productForm.get('id')!" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="name"
+            [class.is-invalid]="
+              productForm.get('name')?.invalid &&
+              (productForm.get('name')?.dirty ||
+                productForm.get('name')?.touched)
+            "
+          />
+          <app-form-errors [control]="productForm.get('name')!" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            formControlName="description"
+            [class.is-invalid]="
+              productForm.get('description')?.invalid &&
+              (productForm.get('description')?.dirty ||
+                productForm.get('description')?.touched)
+            "
+          />
+          <app-form-errors [control]="productForm.get('description')!" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="logo">Logo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="logo"
+            formControlName="logo"
+            [class.is-invalid]="
+              productForm.get('logo')?.invalid &&
+              (productForm.get('logo')?.dirty ||
+                productForm.get('logo')?.touched)
+            "
+          />
+          <app-form-errors [control]="productForm.get('logo')!" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="date_release">Fecha de Liberación</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date_release"
+            formControlName="date_release"
+            [class.is-invalid]="
+              productForm.get('date_release')?.invalid &&
+              (productForm.get('date_release')?.dirty ||
+                productForm.get('date_release')?.touched)
+            "
+          />
+          <app-form-errors [control]="productForm.get('date_release')!" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="date_revision">Fecha de Revisión</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date_revision"
+            formControlName="date_revision"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 button-group">
+        <button class="btn btn-secondary" type="submit" (click)="resetForm()">
+          Reiniciar
+        </button>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="productForm.invalid"
+        >
+          Enviar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

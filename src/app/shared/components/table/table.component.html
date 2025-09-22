@@ -29,6 +29,32 @@
 <div class="table-footer">
   <div class="total-results">{{ totalResults }} resultados</div>
   <div class="pagination-controls">
+    <button
+      (click)="goToPage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="btn btn-primary"
+    >
+      «
+    </button>
+
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      (click)="goToPage(i + 1)"
+      [class.active]="currentPage === i + 1"
+      class="btn"
+    >
+      {{ i + 1 }}
+    </button>
+
+    <button
+      (click)="goToPage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      class="btn btn-primary"
+    >
+      »
+    </button>
+  </div>
+  <div class="pagination-controls">
     <select
       [value]="pageSize"
       (change)="onPageSizeChange($event)"

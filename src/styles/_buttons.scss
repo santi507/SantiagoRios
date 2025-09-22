@@ -14,5 +14,30 @@
     background-color: $primary;
     color: $dark;
     font-weight: bold;
+
+    &:disabled,
+    &[disabled] {
+      background-color: $primary-disabled;
+      color: $gray-light;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  &-secondary {
+    background-color: $gray-light;
+    color: $dark;
+    font-weight: bold;
+  }
+}
+
+.button-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+
+  .btn {
+    margin-right: 1.5rem;
   }
 }
