@@ -1,7 +1,13 @@
 @use "variables" as *;
 
+.data-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .data-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
@@ -16,26 +22,18 @@
   border-bottom: 1px solid $gray-light;
 }
 
-.data-table thead {
-  th {
-    background-color: $light;
-    color: $dark;
-    font-weight: bold;
-  }
+.data-table thead th {
+  background-color: $light;
+  color: $dark;
+  font-weight: bold;
 }
 
-.data-table tbody {
-  tr {
-    background-color: $white;
-    transition: background-color 0.3s ease;
+.data-table tbody tr {
+  background-color: $white;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: $light;
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
+  &:hover {
+    background-color: $light;
   }
 }
 
@@ -52,6 +50,9 @@
 }
 
 .pagination-controls {
+  display: flex;
+  align-items: center;
+
   .btn {
     padding: 4px 8px;
     border: 1px solid $gray-light;
@@ -70,38 +71,17 @@
       opacity: 0.6;
     }
   }
+
+  select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
 }
 
-.pagination-controls select {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-/* Estilos para hacer la tabla responsiva en dispositivos pequeños */
 @media (max-width: 768px) {
   .data-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .data-table thead,
-  .data-table tbody,
-  .data-table th,
-  .data-table td,
-  .data-table tr {
-    display: block;
-  }
-
-  .data-table thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  .data-table tr:nth-child(even) {
-    background-color: $light;
+    min-width: 500px;
   }
 }

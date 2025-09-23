@@ -1,59 +1,68 @@
-# FinancialProductsWeb
+# Aplicación de Productos Financieros
+
+Esta es una aplicación web en Angular que implementa un CRUD (Crear, Leer, Actualizar, Eliminar) para productos financieros.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.17.
 
-## Development server
+# Requisitos Previos
 
-To start a local development server, run:
+Asegúrate de tener instalado lo siguiente:
 
-```bash
-ng serve
-```
+- Node.js y npm (versión 22 o superior).
+- Angular CLI (versión 19)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+# Instalación
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clonar el repositorio
 
 ```bash
-ng generate component component-name
+git clone https://github.com/santi507/SantiagoRios.git
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Navega a la carpeta del proyecto.
 
 ```bash
-ng generate --help
+cd SantiagoRios
 ```
 
-## Building
-
-To build the project run:
+3. Instala las dependencias del proyecto.
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Ejecución del Proyecto
 
-## Running unit tests
+Para ejecutar la aplicación en modo de desarrollo, es necesario que el servicio de backend en Node.js esté corriendo en el puerto **3002**.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Manejo de CORS con Proxy
+
+Este proyecto utiliza un proxy de desarrollo para evitar errores de CORS. El archivo _proxy.conf.json_ redirige todas las solicitudes al backend de Node.js, asegurando una comunicación fluida entre ambos servidores locales.
+
+Para iniciar la aplicación, usa el siguiente comando:
 
 ```bash
-ng test
+ng serve --proxy-config proxy.conf.json
 ```
 
-## Running end-to-end tests
+Abrir una ventana en el navegador y colocar la siguiente ruta http://localhost:4200/.
 
-For end-to-end (e2e) testing, run:
+## Ejecución de Pruebas
+
+El proyecto incluye pruebas unitarias con Jest y un requisito de cobertura mínima del **70%**.
+
+### Ejecutar todas las pruebas
+
+Para correr todas las pruebas unitarias de los componentes y servicios, usa el siguiente comando:
 
 ```bash
-ng e2e
+npm run test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Generar Informe de Cobertura
 
-## Additional Resources
+Para ejecutar las pruebas y generar un informe de cobertura detallado, usa:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run test:coverage
+```
