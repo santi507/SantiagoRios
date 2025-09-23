@@ -11,5 +11,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './avatar.component.scss',
 })
 export class AvatarComponent {
-  @Input() text: string = '';
+  @Input() text: string = 'default';
 }
